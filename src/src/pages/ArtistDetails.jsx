@@ -14,13 +14,11 @@ const ArtistDetails = () => {
     error,
   } = useGetArtistDetailsQuery(artistId);
 
-  if (isFetchingArtistDetails)
-    return <Loader title="Loading artist details..." />;
-
-  if (error) return <Error />;
 
   return (
     <div className="flex flex-col">
+    {isFetchingArtistDetails && <Loader title="Loading artist details..." /> }
+{error && <Error />}
       <DetailsHeader artistId={artistId} artistData={artistData} />
 
       <RelatedSongs
